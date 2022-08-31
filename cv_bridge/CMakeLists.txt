@@ -7,8 +7,12 @@ if(NOT ANDROID)
   find_package(PythonLibs)
 
   if(PYTHONLIBS_VERSION_STRING VERSION_LESS "3.8")
-    # Debian Buster
-    find_package(Boost REQUIRED python37)
+    if($ENV{ROS_DISTRO} STREQUAL "noetic")
+      # Debian Buster
+      find_package(Boost REQUIRED python37)
+    else
+      find_package(Boost REQUIRED python3)
+    endif()
   else()
     # Ubuntu Focal
     find_package(Boost REQUIRED python)
