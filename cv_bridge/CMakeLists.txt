@@ -3,12 +3,16 @@ project(cv_bridge)
 
 find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs)
 
+set(PYTHON_EXECUTABLE /usr/bin/python3)
+
 if(NOT ANDROID)
-  find_package(PythonLibs)
+  set(PYTHON_INCLUDE_DIR /usr/include/python3.6m)
+  set(PYTHON_LIBRARY /usr/lib/x86_64-linux-gnu/libpython3.6m.so)
+  find_package (Python3 COMPONENTS Compiler Development)
 
   if(PYTHONLIBS_VERSION_STRING VERSION_LESS "3.8")
     # Debian Buster
-    find_package(Boost REQUIRED python37)
+    find_package(Boost REQUIRED python3)
   else()
     # Ubuntu Focal
     find_package(Boost REQUIRED python)
