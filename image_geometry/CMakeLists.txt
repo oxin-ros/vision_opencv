@@ -6,7 +6,7 @@ find_package(OpenCV REQUIRED)
 
 catkin_package(CATKIN_DEPENDS sensor_msgs
                DEPENDS OpenCV
-               INCLUDE_DIRS include
+               INCLUDE_DIRS include ${OpenCV_INCLUDE_DIRS}
                LIBRARIES ${PROJECT_NAME}
 )
 
